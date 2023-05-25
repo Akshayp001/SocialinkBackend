@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 const UserpSchema=new mongoose.Schema({
-    UID:{
+    uid:{
         type:String,
         required:true,
     },
@@ -12,10 +12,10 @@ const UserpSchema=new mongoose.Schema({
         type:Array,
         default:0,
     },
-    Likecnt:{
-        type:Number,
+    pbgpic:{
+        type:String,
         default:0,
-    },
+    }
 
 });
 const Userp=mongoose.model("Userp",UserpSchema);
