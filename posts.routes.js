@@ -36,7 +36,7 @@ app.get("/posts",async(request,response)=>{
 
 app.get("/uposts/:userId",async(request,response)=>{
     const { userId } = request.params;
-    const posts=await postModel.findone({userId});
+    const posts=await postModel.find({userId});
 
     try{
         response.send(posts);
@@ -48,7 +48,7 @@ app.get("/uposts/:userId",async(request,response)=>{
 
 app.get("/posts/:_id",async(request,response)=>{
     const { _id } = request.params;
-    const post=await postModel.find({_id});
+    const post=await postModel.findOne({_id});
 
     try{
         response.send(post);
