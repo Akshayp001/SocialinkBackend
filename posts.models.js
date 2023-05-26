@@ -24,6 +24,14 @@ const PostsSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
+    larr:{
+        type:[],
+        default:0,
+    },
+    carr:{
+        type:[],
+        default:0,
+    },
 
 });
 const Posts=mongoose.model("Posts",PostsSchema);

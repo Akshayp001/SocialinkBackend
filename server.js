@@ -16,9 +16,9 @@ app.use(cors());
 
 
 mongoose.connect(
-    // `mongodb://127.0.0.1:27017/SocialLink`,
-    `mongodb+srv://${username}:${password}@${clusterName}.mongodb.net/${databaseName}?
-    // retryWrites=true&w=majority`,
+    `mongodb://127.0.0.1:27017/SocialLink`,
+    // `mongodb+srv://${username}:${password}@${clusterName}.mongodb.net/${databaseName}?
+    // // retryWrites=true&w=majority`,
     {
     // useNewUrlParser:true,
     // useFindAndModify:false,
@@ -30,7 +30,7 @@ mongoose.connect(
 const db=mongoose.connection;
 db.on("error",console.error.bind(console,"connection failed: "));
 db.once("open",function(){
-    console.log("Connected to the Detabase Successfully ");
+    console.log("Connected to the Database Successfully ");
 });
 
 app.use(uRouter);

@@ -23,6 +23,19 @@ app.get("/users",async(request,response)=>{
     }
 });
 
+
+app.get("/users/:uid",async(request,response)=>{
+    const { uid } = request.params;
+    const user=await userModel.findOne({uid});
+
+    try{
+        response.send(user);
+
+    }catch(error){
+        response.status(500).send(error);
+    }
+});
+
 app.put("/users/:uid", async (request, response) => {
     const { uid } = request.params;
   
