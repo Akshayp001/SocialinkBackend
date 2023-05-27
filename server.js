@@ -3,6 +3,9 @@ const mongoose =require("mongoose");
 const pRouter=require("./posts.routes");
 const uRouter=require("./user.routes");
 const upRouter=require("./userp.routes");
+// const upRouter=require("./userp.routes");
+const cRouter=require("./comments.routes");
+const fRouter=require("./filters.routes");
 const { deleteMany } = require('./posts.models');
 const app=express();
 app.use(express.json());
@@ -36,6 +39,8 @@ db.once("open",function(){
 app.use(uRouter);
 app.use(upRouter);
 app.use(pRouter);
+app.use(cRouter);
+app.use(fRouter);
 app.listen(3000,()=>{
     console.log("Server Connected On Post 3000");
 

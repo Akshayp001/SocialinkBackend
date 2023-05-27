@@ -1,38 +1,52 @@
 const mongoose=require("mongoose");
-const PostsSchema=new mongoose.Schema({
-    caption:{
-        type:String,
-        required:true,
+const CommentSchema = new mongoose.Schema({
+    content: {
+      type: String,
+      required: true,
     },
-    lcnt:{
-        type:Number,
-        default:0,
+    dt: {
+      type: String,
+      required: true,
     },
-    img:{
-        type:String,
-        default:0,
+    uid: {
+      type: String,
+      required: true,
     },
-    isLiked:{
-        type:Boolean,
-        required:true,
+  });
+  
+  const PostsSchema = new mongoose.Schema({
+    caption: {
+      type: String,
+      required: true,
     },
-    dt:{
-        type:String,
-        required:true,
+    lcnt: {
+      type: Number,
+      default: 0,
     },
-    userId:{
-        type:String,
-        required:true,
+    img: {
+      type: String,
+      default: 0,
     },
-    larr:{
-        type:[],
-        default:0,
+    isLiked: {
+      type: Boolean,
+      required: true,
     },
-    carr:{
-        type:[],
-        default:0,
+    dt: {
+      type: String,
+      required: true,
     },
-
-});
+    userId: {
+      type: String,
+      required: true,
+    },
+    larr: {
+      type: [],
+      default: 0,
+    },
+    carr: {
+      type: [CommentSchema],
+      default: [],
+    },
+  });
 const Posts=mongoose.model("Posts",PostsSchema);
 module.exports=Posts;
