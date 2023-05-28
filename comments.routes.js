@@ -102,4 +102,22 @@ app.get("/posts/:_id/comments", async (req, res) => {
       res.status(500).json({ message: "Server Error" });
     }
   });
+
+  app.get("/posts/larr/:_id", async (req, res) => {
+    const postId = req.params._id;
+  
+    try {
+      const post = await Posts.findById(postId);
+  
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+  
+      const likesArray = post.larr;
+      res.json(likesArray);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server Error" });
+    }
+  });
 module.exports=app;
