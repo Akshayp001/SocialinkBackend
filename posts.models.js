@@ -17,7 +17,7 @@ const CommentSchema = new mongoose.Schema({
   const PostsSchema = new mongoose.Schema({
     caption: {
       type: String,
-      required: true,
+      default:0,
     },
     lcnt: {
       type: Number,
