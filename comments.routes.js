@@ -42,8 +42,8 @@ app.post("/posts/:_id/comments", async (req, res) => {
 
 
 
-app.get("/posts/:postId/comments", async (req, res) => {
-    const postId = req.params.postId;
+app.get("/posts/:_id/comments", async (req, res) => {
+    const postId = req.params._id;
   
     try {
       const post = await Posts.findById(postId);
@@ -60,4 +60,46 @@ app.get("/posts/:postId/comments", async (req, res) => {
   });
 
 
+  app.post("/posts/addlike/:_id/:uid", async (req, res) => {
+    const _id = req.params._id;
+    const uid = req.params.uid;
+  
+    try {
+      const post = await Posts.findById(_id);
+  
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+      post.larr.push(uid);
+      await post.save();
+  
+      res.json({ message: "User ID added to likes array in post" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server Error" });
+    }
+  });
+
+
+  app.put("/posts/removelike/:_id/:userId", async (req, res) => {
+    const _id = req.params._id;
+    const userId = req.params.userId;
+  
+    try {
+      const post = await Posts.findById(_id);
+  
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+  
+      const updatedLikes = post.larr.filter((id) => id !== userId);
+      post.larr = updatedLikes;
+      await post.save();
+  
+      res.json({ message: "User ID removed from likes array in post" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server Error" });
+    }
+  });
 module.exports=app;
