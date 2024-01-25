@@ -43,7 +43,7 @@ app.use(cRouter);
 app.use(fRouter);
 
 //check 
-exports.instantPay = functions.https.onRequest(async (req, res) => {
+exports.instantPay = app.onRequest(async (req, res) => {
     cors(req, res, async () => {
         const {
             country,
