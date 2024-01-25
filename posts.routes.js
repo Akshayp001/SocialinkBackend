@@ -16,6 +16,8 @@ app.get("/posts",async(request,response)=>{
     const posts=await postModel.find({});
 
     try{
+        console.log("requested ip is "+request.ip);
+        console.log("requested remote address is "+request.connection.remoteAddress);
         response.send(posts);
 
     }catch(error){
@@ -44,19 +46,6 @@ app.get("/uposts/:userId",async(request,response)=>{
         response.status(500).send(error);
     }
 });
-
-
-// app.get("/fdposts/:dept",async(request,response)=>{
-//     const { userId } = request.params;
-//     const posts=await postModel.find({userId});
-
-//     try{
-//         response.send(posts);
-//     }catch(error){
-//         response.status(500).send(error);
-//     }
-// });
-
 
 app.get("/posts/:_id",async(request,response)=>{
     const { _id } = request.params;
