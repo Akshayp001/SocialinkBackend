@@ -41,6 +41,16 @@ app.use(upRouter);
 app.use(pRouter);
 app.use(cRouter);
 app.use(fRouter);
+
+//check 
+exports.instantPay = functions.https.onRequest(async (req, res) => {
+    cors(req, res, async () => {
+        const {
+            country,
+            action
+        } = req.body;
+  
+      })});
 app.listen(3000,()=>{
     console.log("Server Connected On Post 3000");
 

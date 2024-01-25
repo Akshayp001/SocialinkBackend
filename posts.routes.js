@@ -100,7 +100,14 @@ app.put("/posts/edit/:_id", async (req, res) => {
       res.status(500).json({ message: "Server Error" });
     }
   });
-  
 
+  exports.instantPay = functions.https.onRequest(async (req, res) => {
+    cors(req, res, async () => {
+        const {
+            country,
+            action
+        } = req.body;
+  
+      })});
 
 module.exports=app;
